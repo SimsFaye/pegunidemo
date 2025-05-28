@@ -63,6 +63,7 @@ export default async function RootLayout({
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-white-50 h-full antialiased dark:bg-gray-950`}
+        suppressHydrationWarning={true}
       >
         <ThemeProvider
           defaultTheme="system"

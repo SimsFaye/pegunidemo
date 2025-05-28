@@ -40,13 +40,13 @@ const navigation = [
 
 const navigation2 = [
   {
-    name: "Sales",
+    name: "SchoolSearch",
     href: "#",
     icon: BookText,
     children: [
       {
-        name: "Quotes",
-        href: "#",
+        name: "Search",
+        href: "/quotes/overview",
         active: true,
       },
       {
