@@ -293,8 +293,20 @@ export function SearchProvider({ children }: { children: ReactNode }) {
       
       // 发送请求
       const response = await fetch(`https://college-demo.peguni.com/api/info/search?${params.toString()}`, {
-        credentials: 'include'
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
       });
+      
+      // 如果收到401错误，重定向到登录页面
+      if (response.status === 401) {
+        console.error('认证已失效，需要重新登录');
+        // 重定向到登录页面
+        window.location.href = 'https://college-demo.peguni.com/login';
+        throw new Error('认证已过期，正在重定向到登录页面');
+      }
       
       if (!response.ok) {
         throw new Error(`API请求失败: ${response.status}`);

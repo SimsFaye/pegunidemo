@@ -39,7 +39,7 @@ export function SearchInterface() {
           id="school_name"
           value={basicParams.school_name}
           onChange={(e) => updateBasicParams({ school_name: e.target.value })}
-          placeholder="输入学校名称(中文、日文或英文)"
+          placeholder="输入学校名称"
           className="w-full"
         />
       </div>
@@ -67,7 +67,7 @@ export function SearchInterface() {
             id="department_name"
             value={basicParams.department_name}
             onChange={(e) => updateBasicParams({ department_name: e.target.value })}
-            placeholder="支持模糊查询"
+            placeholder="仅支持日文查询"
           />
         </div>
       </div>
@@ -182,6 +182,7 @@ export function SearchInterface() {
         </div>
       </div>
       
+      
       {/* 申请要求筛选 */}
       <div className="space-y-4">
         <h4 className="text-md font-medium">申请要求</h4>
@@ -219,9 +220,13 @@ export function SearchInterface() {
             <Label htmlFor="reference_works">需要参考作品</Label>
           </div>
         </div>
-        
+      </div>
+
+            {/* 工作经历要求 */}
+            <div className="space-y-4">
+        <h4 className="text-md font-medium">工作经历要求</h4>
         <div className="space-y-2">
-          <Label htmlFor="work_history">工作经历要求</Label>
+          <Label htmlFor="work_history">职务履历书</Label>
           <Select 
             value={advancedParams.work_history_requirement_status}
             onValueChange={(value) => updateAdvancedParams({ work_history_requirement_status: value })}
@@ -236,43 +241,6 @@ export function SearchInterface() {
               <SelectItem value="該当なし">該当なし</SelectItem>
             </SelectContent>
           </Select>
-        </div>
-      </div>
-      
-      {/* 分页设置 */}
-      <div className="space-y-4">
-        <h4 className="text-md font-medium">结果分页</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="page">页码</Label>
-            <Input
-              id="page"
-              type="number"
-              min={1}
-              value={advancedParams.page || 1}
-              onChange={(e) => updateAdvancedParams({ page: parseInt(e.target.value) || 1 })}
-              placeholder="页码"
-            />
-            <p className="text-xs text-gray-500">最小值: 1</p>
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="page_size">每页数量</Label>
-            <Input
-              id="page_size"
-              type="number"
-              min={1}
-              max={100}
-              value={advancedParams.page_size || 10}
-              onChange={(e) => {
-                const value = parseInt(e.target.value) || 10;
-                const clampedValue = Math.min(Math.max(value, 1), 100);
-                updateAdvancedParams({ page_size: clampedValue });
-              }}
-              placeholder="每页数量"
-            />
-            <p className="text-xs text-gray-500">范围: 1-100，默认: 10</p>
-          </div>
         </div>
       </div>
     </div>

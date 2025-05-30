@@ -4,7 +4,7 @@ import { SearchInterface } from './components/SearchInterface';
 import { SearchResults } from './components/SearchResults';
 import { SearchProvider } from './context/SearchContext';
 
-export default function QuotesOverviewPage() {
+export default function SchoolSearchPage() {
   return (
     <div className="container mx-auto py-6">
       <SearchProvider>

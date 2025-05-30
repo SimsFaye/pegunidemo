@@ -1,15 +1,47 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
+
+interface User {
+  given_name: string
+  family_name: string
+  nickname: string
+  name: string
+  picture: string
+  updated_at: string
+  email: string
+  email_verified: boolean
+  iss: string
+  aud: string
+  sub: string
+  iat: number
+  exp: number
+  sid: string
+  nonce: string
+}
 
 interface AuthResponse {
   authenticated: boolean
-  message: string
+  message?: string
+  user?: User
 }
+
+interface AuthContextType {
+  user: User | null
+  isLoading: boolean
+}
+
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  isLoading: true
+})
+
+export const useAuth = () => useContext(AuthContext)
 
 export function Auth({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
+  const [user, setUser] = useState<User | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -25,6 +57,10 @@ export function Auth({ children }: { children: React.ReactNode }) {
           // 如果未认证，重定向到登录页面
           window.location.href = "https://college-demo.peguni.com/login"
           return
+        }
+        
+        if (data.user) {
+          setUser(data.user)
         }
       } catch (error) {
         // 出错时重定向到登录页面
@@ -48,5 +84,9 @@ export function Auth({ children }: { children: React.ReactNode }) {
   }
 
   // 已认证，渲染子组件
-  return <>{children}</>
+  return (
+    <AuthContext.Provider value={{ user, isLoading }}>
+      {children}
+    </AuthContext.Provider>
+  )
 } 
