@@ -27,7 +27,7 @@ export function ScheduleTab({
   formatDate 
 }: ScheduleTabProps) {
   if (!result.common_schedule || result.common_schedule.length === 0) {
-    return <p className="text-gray-500">无入学日程信息</p>;
+    return <p className="text-gray-500 dark:text-gray-400">无入学日程信息</p>;
   }
 
   // 渲染每个选项卡的内容
@@ -121,20 +121,20 @@ export function ScheduleTab({
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="font-medium text-gray-700 mb-1">基本信息</p>
-            <div className="space-y-1 pl-2 border-l-2 border-blue-200">
+            <p className="font-medium text-gray-700 dark:text-gray-300 mb-1">基本信息</p>
+            <div className="space-y-1 pl-2 border-l-2 border-blue-200 dark:border-blue-500">
               <p>
-                <span className="text-gray-500">申请季节：</span>
-                <span>{schedule.admission_season.year}年 {schedule.admission_season.term}季</span>
+                <span className="text-gray-500 dark:text-gray-400">申请季节：</span>
+                <span className="text-gray-900 dark:text-gray-100">{schedule.admission_season.year}年 {schedule.admission_season.term}季</span>
               </p>
               <p>
-                <span className="text-gray-500">申请类型：</span>
-                <span>{schedule.exam_category.course} ({schedule.exam_category.specialization})</span>
+                <span className="text-gray-500 dark:text-gray-400">申请类型：</span>
+                <span className="text-gray-900 dark:text-gray-100">{schedule.exam_category.course} ({schedule.exam_category.specialization})</span>
               </p>
               {schedule.enrollment_month && schedule.enrollment_month.length > 0 && (
                 <p>
-                  <span className="text-gray-500">入学时间：</span>
-                  <span>
+                  <span className="text-gray-500 dark:text-gray-400">入学时间：</span>
+                  <span className="text-gray-900 dark:text-gray-100">
                     {schedule.enrollment_month.map((month: any, i: number) => (
                       <span key={i}>{month.year}年{month.month}月{i < schedule.enrollment_month.length - 1 ? '、' : ''}</span>
                     ))}
@@ -143,26 +143,26 @@ export function ScheduleTab({
               )}
               {schedule.exam_format && schedule.exam_format.length > 0 && (
                 <p>
-                  <span className="text-gray-500">考试形式：</span>
-                  <span>{schedule.exam_format.join('、')}</span>
+                  <span className="text-gray-500 dark:text-gray-400">考试形式：</span>
+                  <span className="text-gray-900 dark:text-gray-100">{schedule.exam_format.join('、')}</span>
                 </p>
               )}
             </div>
           </div>
           
           <div>
-            <p className="font-medium text-gray-700 mb-1">费用信息</p>
-            <div className="space-y-1 pl-2 border-l-2 border-green-200">
+            <p className="font-medium text-gray-700 dark:text-gray-300 mb-1">费用信息</p>
+            <div className="space-y-1 pl-2 border-l-2 border-green-200 dark:border-green-500">
               {schedule.application_fee_amount && (
                 <p>
-                  <span className="text-gray-500">申请费用：</span>
-                  <span>{schedule.application_fee_amount} {schedule.application_fee_currency}</span>
+                  <span className="text-gray-500 dark:text-gray-400">申请费用：</span>
+                  <span className="text-gray-900 dark:text-gray-100">{schedule.application_fee_amount} {schedule.application_fee_currency}</span>
                 </p>
               )}
               {schedule.application_fee_notes && (
                 <p>
-                  <span className="text-gray-500">费用备注：</span>
-                  <span className="text-sm">{schedule.application_fee_notes}</span>
+                  <span className="text-gray-500 dark:text-gray-400">费用备注：</span>
+                  <span className="text-sm text-gray-900 dark:text-gray-100">{schedule.application_fee_notes}</span>
                 </p>
               )}
             </div>
@@ -171,8 +171,8 @@ export function ScheduleTab({
         
         {/* 申请时间安排 - 使用表格替代时间线 */}
         <div className="mt-4">
-          <p className="font-medium text-gray-700 mb-1">申请时间安排</p>
-          <div className="pl-2 border-l-2 border-blue-200">
+          <p className="font-medium text-gray-700 dark:text-gray-300 mb-1">申请时间安排</p>
+          <div className="pl-2 border-l-2 border-blue-200 dark:border-blue-500">
             <TableRoot>
               <Table>
                 <TableHead>

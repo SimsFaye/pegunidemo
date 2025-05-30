@@ -75,11 +75,11 @@ export function SearchInterface() {
   );
 
   const renderAdvancedFields = () => (
-    <div className="space-y-6 pt-4 border-t border-gray-200 mt-4">
+    <div className="space-y-6 pt-4 border-t border-gray-200 dark:border-gray-700 mt-4">
       
       {/* 基础筛选 */}
       <div className="space-y-4">
-        <h4 className="text-md font-medium">基础筛选</h4>
+        <h4 className="text-md font-medium text-gray-900 dark:text-gray-100">基础筛选</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="location">地区</Label>
@@ -112,7 +112,7 @@ export function SearchInterface() {
       
       {/* 语言要求筛选 */}
       <div className="space-y-4">
-        <h4 className="text-md font-medium">语言要求</h4>
+        <h4 className="text-md font-medium text-gray-900 dark:text-gray-100">语言要求</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
@@ -185,7 +185,7 @@ export function SearchInterface() {
       
       {/* 申请要求筛选 */}
       <div className="space-y-4">
-        <h4 className="text-md font-medium">申请要求</h4>
+        <h4 className="text-md font-medium text-gray-900 dark:text-gray-100">申请要求</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex items-center space-x-2">
             <Checkbox 
@@ -224,7 +224,7 @@ export function SearchInterface() {
 
             {/* 工作经历要求 */}
             <div className="space-y-4">
-        <h4 className="text-md font-medium">工作经历要求</h4>
+        <h4 className="text-md font-medium text-gray-900 dark:text-gray-100">工作经历要求</h4>
         <div className="space-y-2">
           <Label htmlFor="work_history">职务履历书</Label>
           <Select 
@@ -247,7 +247,7 @@ export function SearchInterface() {
   );
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
       <form onSubmit={handleSubmit}>
         <div className="space-y-6">
           {renderBasicFields()}
@@ -255,7 +255,7 @@ export function SearchInterface() {
           <div className="flex items-center justify-between pt-4">
             <button
               type="button"
-              className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm font-medium transition-colors"
               onClick={toggleAdvancedSearch}
             >
               {isAdvancedSearchOpen ? '隐藏高级搜索' : '显示高级搜索'}
@@ -264,7 +264,7 @@ export function SearchInterface() {
           
           {isAdvancedSearchOpen && renderAdvancedFields()}
           
-          <div className="flex justify-end space-x-4 pt-4 border-t mt-4">
+          <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200 dark:border-gray-700 mt-4">
             <Button 
               type="button" 
               variant="light" 

@@ -44,7 +44,7 @@ export function SchoolDetailContent({ result, resultIndex }: SchoolDetailContent
       {/* 专业/课程列表 */}
       {result.courses && result.courses.length > 0 && (
         <div className="mt-2 mb-4">
-          <span className="text-gray-500 font-medium">专业/课程：</span>
+          <span className="text-gray-500 dark:text-gray-400 font-medium">专业/课程：</span>
           <div className="flex flex-wrap gap-2 mt-1">
             {result.courses.map((course: any, i: number) => {
               // 循环使用Badge的变体类型

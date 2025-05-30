@@ -2,6 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { useTheme } from 'next-themes';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -55,6 +56,8 @@ export default function VerticalTabs({
   className = ''
 }: VerticalTabsProps) {
   const [value, setValue] = React.useState(defaultValue);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -65,7 +68,13 @@ export default function VerticalTabs({
 
   return (
     <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: height }}
+      sx={{ 
+        flexGrow: 1, 
+        bgcolor: 'background.paper', 
+        display: 'flex', 
+        height: height,
+        backgroundColor: isDark ? '#1f2937' : '#ffffff'
+      }}
       className={className}
     >
       <Tabs
@@ -74,7 +83,22 @@ export default function VerticalTabs({
         value={value}
         onChange={handleChange}
         aria-label="垂直选项卡"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        sx={{ 
+          borderRight: 1, 
+          borderColor: isDark ? '#4b5563' : '#e5e7eb',
+          '& .MuiTab-root': {
+            color: isDark ? '#d1d5db' : '#374151',
+            '&.Mui-selected': {
+              color: isDark ? '#3b82f6' : '#2563eb',
+            },
+            '&:hover': {
+              color: isDark ? '#f3f4f6' : '#1f2937',
+            }
+          },
+          '& .MuiTabs-indicator': {
+            backgroundColor: isDark ? '#3b82f6' : '#2563eb',
+          }
+        }}
       >
         {tabs.map((tab, index) => (
           <Tab key={index} label={tab.label} {...a11yProps(index)} />

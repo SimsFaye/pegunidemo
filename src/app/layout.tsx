@@ -1,5 +1,6 @@
 import { Auth } from "@/components/Auth"
 import { SidebarProvider, SidebarTrigger } from "@/components/Sidebar"
+import { ThemeSwitcher } from "@/components/ThemeSwitcher"
 import { AppSidebar } from "@/components/ui/navigation/AppSidebar"
 import { Breadcrumbs } from "@/components/ui/navigation/Breadcrumbs"
 import type { Metadata } from "next"
@@ -78,6 +79,9 @@ export default async function RootLayout({
                   <SidebarTrigger className="-ml-1" />
                   <div className="mr-2 h-4 w-px bg-gray-200 dark:bg-gray-800" />
                   <Breadcrumbs />
+                  <div className="ml-auto flex items-center gap-2">
+                    <ThemeSwitcher />
+                  </div>
                 </header>
                 <main>{children}</main>
               </div>
