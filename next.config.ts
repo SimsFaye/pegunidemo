@@ -5,13 +5,21 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/quotes/overview",
+        destination: "/schoolsearch",
         permanent: true,
       },
     ]
   },
+  rewrites: async () => {
+    return [
+      {
+        source: "/schoolsearch",
+        destination: "/schoolsearch/overview",
+      },
+    ]
+  },
   images: {
-    domains: ['lh3.googleusercontent.com'],
+    unoptimized: true,
   },
 }
 

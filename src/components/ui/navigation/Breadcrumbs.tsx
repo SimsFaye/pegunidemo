@@ -8,8 +8,8 @@ export function Breadcrumbs() {
   const pathname = usePathname();
   
   // 根据当前路径确定面包屑内容
-  const isSearch = pathname.includes('/quotes/overview');
-  const isChatbot = pathname.includes('/chatbot');
+  const isSearch = pathname.includes('/schoolsearch');
+  const isAssistant = pathname.includes('/assistant');
   
   return (
     <>
@@ -30,7 +30,7 @@ export function Breadcrumbs() {
           <li className="flex">
             <div className="flex items-center">
               <Link
-                href={isSearch ? "/quotes/overview" : "/chatbot"}
+                href={isSearch ? "/schoolsearch" : "/assistant"}
                 aria-current="page"
                 className="text-gray-900 dark:text-gray-50"
               >

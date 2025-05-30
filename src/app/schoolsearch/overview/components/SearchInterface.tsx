@@ -39,7 +39,7 @@ export function SearchInterface() {
           id="school_name"
           value={basicParams.school_name}
           onChange={(e) => updateBasicParams({ school_name: e.target.value })}
-          placeholder="输入学校名称(中文、日文或英文)"
+          placeholder="输入学校名称"
           className="w-full"
         />
       </div>
@@ -67,7 +67,7 @@ export function SearchInterface() {
             id="department_name"
             value={basicParams.department_name}
             onChange={(e) => updateBasicParams({ department_name: e.target.value })}
-            placeholder="支持模糊查询"
+            placeholder="仅支持日文查询"
           />
         </div>
       </div>

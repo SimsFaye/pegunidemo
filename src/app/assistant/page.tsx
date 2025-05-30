@@ -1,6 +1,6 @@
 "use client"
 
-export default function ChatbotPage() {
+export default function AssistantPage() {
   return (
     <div className="container mx-auto py-6">
       <div className="flex flex-col items-center justify-center min-h-[60vh]">
